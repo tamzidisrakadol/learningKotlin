@@ -109,15 +109,30 @@ fun main(){
     println(numResult)
 
 
+    //creating oject of Function
     var newsfun = newFunction(2,3)
     println(newsfun)
+
+    //creating object of NewClass
+    var newClass = NewClass("japan",2012,"Sujuki")
+    var newClass2 = NewClass("malaysia",2016,"Hero")
+
+    println(newClass.band)
+    println(newClass2.year)
+
+    // get the function from NewClass
+    println(newClass.drive())
+    println(newClass2.speedCollection(200))
+
+    //kotlin inheritance
+    val parentClass = ParentClass()
+    println(parentClass.myNewFunction())
 
 }
 
 
 //creating function in kotlin
-// :Int -> return type || if there is no return it means void
-
+// :Int -> return type || if there is no return type then it means void
 fun newFunction(x:Int, y:Int):Int{
     return x+y
 }
