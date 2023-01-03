@@ -1,5 +1,7 @@
 package com.example.learnkotlin
 
+import java.util.*
+
 // kotlin main function
 fun main() {
     //var & val is used for storing the value of variable
@@ -59,32 +61,31 @@ fun main() {
     }
     //kotlin when statement with range ex-3
     var month = 4
-    when(month){
+    when (month) {
         in 3..5 -> println("Summer season")
         in 7..8 -> println("rainy season")
         in 9..12 -> println("winter season")
-        1,2 -> println("Autumn season")
+        1, 2 -> println("Autumn season")
         else -> println("Invalid Season")
     }
 
     //kotlin when statement with range ex-4
     val drinkAge = 15
-    when(drinkAge){
-        !in 12..17-> println("u are ineligible to drink ")
+    when (drinkAge) {
+        !in 12..17 -> println("u are ineligible to drink ")
         in 18..70 -> println("U are old enough")
-        else-> println("invalid age")
+        else -> println("invalid age")
     }
 
     //kotlin when statement with range ex-5
-    var xy : Any = "13.33F"
-    when(xy){
+    var xy: Any = "13.33F"
+    when (xy) {
         is Int -> println("This is an Integer")
         !is Double -> println("this is a not Double value")
         is String -> println("This is a String")
         is Float -> println("this is a float value")
-        else-> println("invalid type")
+        else -> println("invalid type")
     }
-
 
 
     //$ -> adding two String
@@ -167,12 +168,117 @@ fun main() {
     val parentClass = ParentClass()
     println(parentClass.myNewFunction())
 
+
+    val str1 = "Hello "
+    val str2 = "Motooo "
+
+    val str3 = "whooo "
+    println(str3.add(str1, str2))
+
+
+    val xRow = 6
+    val yCol = 10
+
+    val greatVal = xRow.greaterValue(yCol)
+    println(greatVal)
+
+
+    val person = Person("Tamzid", "Israk")
+
+    person.stateHobby()
+
+    //overridden the hobby property in person class
+    person.hobby = "playing Cricket"
+    person.stateHobby()
+
+    //2nd constructor
+    var secPerson = Person("Adol", "Israk", 22)
+
+    var carStat = Car()
+    println(carStat.myBrand)
+
+    carStat.maxSpeed = 600
+    println(carStat.maxSpeed)
+    println(carStat.myModel)
+
+
 }
 
+fun String.add(s1: String, s2: String): String {
+    return this + s1 + s2
+}
+
+
+fun Int.greaterValue(other: Int): Int {
+    if (this > other) {
+        return this
+    } else
+        return other
+}
 
 //creating function in kotlin
 // :Int -> return type || if there is no return type then it means void
 fun newFunction(x: Int, y: Int): Int {
     return x + y
+}
+
+
+
+
+class Person(fName: String, lName: String) {
+
+    //properties
+    var age: Int? = null
+    var hobby = "Watching netflix"
+    var fName:String? = null
+
+    //initializer
+    init {
+        this.fName = fName
+        println("my First name is $fName and last name is $lName")
+    }
+
+    //2nd constructor
+    constructor(fName: String, lName: String, age: Int)
+            : this(fName, lName) {
+        this.age = age
+
+        println("2nd person  First name is $fName and last name is $lName and age is $age years old")
+    }
+
+    //method
+    fun stateHobby() {
+        println("$fName\'s hobby is $hobby")
+    }
+}
+
+class Car{
+    lateinit var owner:String
+
+    //private setter
+    var myModel = "m5"
+        private set
+
+
+    init {
+        this.myModel ="m5"
+        this.owner ="Mr.Adol"
+    }
+
+    //custom getter
+    val myBrand:String = "BMW"
+    get(){
+        return field.lowercase(Locale.getDefault())
+    }
+
+    //custom setter
+    var maxSpeed : Int = 200
+    set(value) {
+        field=if (value>0) value else throw java.lang.IllegalArgumentException("max speed should be more than 0")
+    }
+
+
+
+
 }
 
