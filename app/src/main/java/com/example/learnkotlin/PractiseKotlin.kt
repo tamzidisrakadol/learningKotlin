@@ -1,13 +1,13 @@
 package com.example.learnkotlin
 
-data class PractiseKotlin(val id: Int, var name:String)
+data class PractiseKotlin(var id: Int, var name: String)
 
 
-fun main(){
-      val user = PractiseKotlin(1,"Micheal")
-        println(user.name)
+fun main() {
+    val user = PractiseKotlin(1, "Micheal")
+    println(user.name)
 
-    val user2 = PractiseKotlin(2,"Piyush")
+    val user2 = PractiseKotlin(2, "Piyush")
     println(user.equals(user2))
 
     println("user details: $user")
@@ -17,10 +17,14 @@ fun main(){
     println(user)
     println(updateUser)
 
-    println(updateUser.component1())
-    println(updateUser.component2())
-
-    val(id,name)= updateUser
+    val (id, name) = updateUser
     println("$id , $name")
 
+    println(updateUser.component1())
+    println(updateUser.component2())
 }
+// data class is used for comparing object
+//it can used for copy the value from another object
+//it can print to-string
+//data class only takes val or var properties in primary constructor
+
