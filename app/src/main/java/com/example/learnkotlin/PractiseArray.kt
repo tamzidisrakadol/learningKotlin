@@ -98,6 +98,12 @@ println()
         print("$elements,")
     }
 
+    println()
+
+
+
+    val manyNum = arrayOf(22,33,44,55,66,77,88,99,9999)
+    println(manyNum.contentToString())
 
 
 
