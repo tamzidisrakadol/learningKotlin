@@ -5,7 +5,7 @@ package com.example.learnkotlin
 
 
 fun main(){
-
+    var divide = 0
     val program=Program()
     program.addTwoNumber(5,6, object :MyInterface{
         override fun execute(sum: Int) {
@@ -30,7 +30,10 @@ fun main(){
 
 
 
-    program.multiplyNumber(5,6,::multiplication)
+    program.multiplyNumber(5,6,::multiplication) // " :: " -> to call function
+
+    program.divideNumber(100,4){x,y->divide=x/y}  //closures -> in kotlin outside properties of lambda can be modified
+    println(divide)
 }
 
 
@@ -44,6 +47,10 @@ class Program{
     fun multiplyNumber(p:Int, q:Int, action:(Int,Int)->Int){    //Higher order function
         var multiResult = action(p,q)
         println(multiResult)
+    }
+
+    fun divideNumber(e:Int,f:Int,division:(Int,Int)->Unit){
+        division(e,f)
     }
 }
 
