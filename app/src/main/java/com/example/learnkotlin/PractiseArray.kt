@@ -53,8 +53,8 @@ fun main(){
     }
 
     println()
-    //map
 
+    //map
     var myMap = mapOf<Int,String>(1 to "Super 4t",21 to "power4t", 155 to "Gulf mobil")  //immutable , fixed size , read only
 
     for(key in myMap.keys){
@@ -106,6 +106,60 @@ println()
     println(manyNum.contentToString())
 
 
+    //filtering list
+    var newNumList = listOf<Int>(8,2,6,77,88,25)
+
+    // it will filter the list and return all the number which is less than 10 \\ filter takes lambda expression
+    //replace with "it" keyword  { v->v<10} as it contains only one parameter
+    val mySmallList = newNumList.filter { it<10}
+
+    println(mySmallList)
+
+    //map -> transform the list
+    val squaredList = newNumList.map { it*it }  //{num-> num*num}
+    println(squaredList)
+
+    //filter + map
+    val smallSquaredList = newNumList.filter { it<10}.map { it*it}
+    println(smallSquaredList.sorted()) //print the list with sorted
+
+    var people= mutableListOf<ContactPerson>()
+    people.add(ContactPerson("Sneha",22))
+    people.add(ContactPerson("Rahul",23))
+    people.add(ContactPerson("Rishi",24))
+    people.add(ContactPerson("Rafi",25))
+    people.add(ContactPerson("Israk",26))
+    people.add(ContactPerson("Shuvo",27))
+    people.add(ContactPerson("Jolly",28))
+    people.add(ContactPerson("Nahid",29))
+
+
+
+    var filterContactList = people.filter { it.pName.startsWith("R")}.map { it.pName }
+    println(filterContactList)
+
+
+
+    // predicates -> "all","any","count","find" = Boolean result
+    val predicateList = listOf<Int>(7,9,77,45,26,68,85,96,12,24,45)
+
+    val check1 = predicateList.all { it>10}   // check if all elements are greater than 10 ?
+    println(check1)
+
+    val check2=predicateList.any { it < 10 }   // check if there any elements are smaller than 10?
+    println(check2)
+
+    val check3 = predicateList.count{it<10}  // check how many element are less than 10
+    println(check3)
+
+    val check4 = predicateList.find {20<=it }  //check all the element and print the first element which is less than 30
+    println(check4)
+
+
+
+
 
 
 }
+
+data class ContactPerson(var pName:String, var pNUm:Int)
