@@ -26,7 +26,7 @@ fun main(){
 
     //lambda expression on different approach but result will remain same
     //program.multiplyNumber(8,9,{x,y->x*y})
-//    program.multiplyNumber(8,9) { x, y -> x * y }
+    //program.multiplyNumber(8,9) { x, y -> x * y }
 
 
 
@@ -34,6 +34,8 @@ fun main(){
 
     program.divideNumber(100,4){x,y->divide=x/y}  //closures -> in kotlin outside properties of lambda can be modified
     println(divide)
+
+    program.reverseName("Kotlin") { it.reversed() }  // lambda expression with it if there is single parameter \\ same as-> { s -> s.reversed() }
 }
 
 
@@ -51,6 +53,11 @@ class Program{
 
     fun divideNumber(e:Int,f:Int,division:(Int,Int)->Unit){
         division(e,f)
+    }
+
+    fun reverseName(str:String,myFunct:(String)->String){  //higher order function
+        var revResult = myFunct(str)
+        println(revResult)
     }
 }
 

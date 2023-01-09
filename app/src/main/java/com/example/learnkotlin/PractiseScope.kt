@@ -14,6 +14,14 @@ class Dairy(){
 }
 
 
+class Messenger{
+    var msg:String =""
+    fun msgRun(){
+        println("The msg is $msg")
+    }
+}
+
+
 
 fun main(){
 
@@ -45,6 +53,23 @@ fun main(){
         println(dChapter)
         println(dImages)
     }
+
+    var msgs= Messenger()
+
+    with(msgs) {
+        msg="This function is executing 'with' keyword"
+    }
+    msgs.msgRun()
+
+
+    // APPLY keyword -> can also call the function in class
+    msgs.apply {
+        msg="Hey I am new in Scope func"
+    }.msgRun()
+
+
+
+
 
 
 }
